@@ -1,0 +1,19 @@
+<%- include('partials/header') %>
+
+<% if (blogPosts && blogPosts.length > 0) { %>
+    <% blogPosts.forEach(post => { %>
+        <div>
+            <h3>Title: <%= post.title %></h3>
+            <p>Description: <%= post.description %></p>
+            <form action="/delete" method="post">
+                <button type="submit" name="id" value="<%= post.id %>">Delete</button>
+              </form>              
+        </div>
+    <% }); %>
+<% } else { %>
+    <h1>There are no posts yet. Create one!</h1>
+<% } %>
+
+<button><a href="/create">Create a New Blog Post</a></button>
+
+<%- include('partials/footer') %>
